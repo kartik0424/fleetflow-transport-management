@@ -3,9 +3,11 @@ package com.fleetflow.backend.service;
 import com.fleetflow.backend.entity.Driver;
 import com.fleetflow.backend.entity.DriverStatus;
 import com.fleetflow.backend.entity.Vehicle;
+import com.fleetflow.backend.entity.VehicleStatus;
 import com.fleetflow.backend.repository.DriverRepository;
 import com.fleetflow.backend.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,7 +31,7 @@ public class DriverService {
             throw new RuntimeException("Phone already exists");
         }
 
-        if(repo.existsByLisenceNumber(driver.getLicenseNumber())){
+        if(repo.existsByLicenseNumber(driver.getLicenseNumber())){
             throw new RuntimeException("License already exists");
         }
 
@@ -52,7 +54,7 @@ public class DriverService {
         return repo.findByStatus(DriverStatus.AVAILABLE);
     }
 
-    public Driver assignVehicle(Long driverId, Long vehicleId){
+    public Driver assignVehicle(@PathVariable Long driverId, @PathVariable Long vehicleId){
         Driver driver = repo.findById(driverId)
                 .orElseThrow(() -> new RuntimeException("Driver not found"));
 
@@ -61,6 +63,9 @@ public class DriverService {
 
         driver.setVehicle(vehicle);
         driver.setStatus(DriverStatus.ON_TRIP);
+
+        vehicle.setStatus(VehicleStatus.ON_TRIP);
+
 
         return repo.save(driver);
     }

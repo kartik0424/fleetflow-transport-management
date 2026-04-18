@@ -11,7 +11,7 @@ import java.util.List;
 public interface DriverRepository extends JpaRepository<Driver,Long> {
     boolean existsByPhone(String phone);
 
-    boolean existsByLisenceNumber(String licenseNumber);
+    boolean existsByLicenseNumber(String licenseNumber);
 
     List<Driver> findByStatus(DriverStatus status);
 }
