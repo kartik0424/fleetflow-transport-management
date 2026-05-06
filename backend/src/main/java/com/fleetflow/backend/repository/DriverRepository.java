@@ -14,4 +14,6 @@ public interface DriverRepository extends JpaRepository<Driver,Long> {
     boolean existsByLicenseNumber(String licenseNumber);
 
     List<Driver> findByStatus(DriverStatus status);
+
+    Long countByStatus(DriverStatus status);
 }
