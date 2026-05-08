@@ -39,4 +39,8 @@ public class Vehicle {
     private LocalDate insuranceExpiry;
 
     private LocalDate lastServiceDate;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

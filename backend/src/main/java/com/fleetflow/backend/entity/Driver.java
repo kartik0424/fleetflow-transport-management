@@ -39,6 +39,10 @@ public class Driver {
     @JoinColumn(name = "vehicle_id") //may give error
     private Vehicle vehicle;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
     private LocalDate createdAt;
     @PrePersist
     public void prePersist(){

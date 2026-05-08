@@ -56,6 +56,10 @@ public class Booking {
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
     @PrePersist
     public void prePersist() {
         if (this.status == null) {
