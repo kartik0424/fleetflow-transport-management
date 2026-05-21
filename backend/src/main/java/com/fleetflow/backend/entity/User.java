@@ -29,11 +29,6 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @NotBlank
-    @Size(min = 8, max = 64)
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$",
-            message = "Password must be 8-20 characters long and include a mix of uppercase, lowercase, numbers, and symbols.")
     private String password;
 
     @Enumerated(EnumType.STRING)

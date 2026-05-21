@@ -37,5 +37,5 @@ public class RegisterRequestDTO {
             regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$",
             message = "Password must contain uppercase, lowercase, number and special character"
     )
-    private String Password;
+    private String password;
 }
